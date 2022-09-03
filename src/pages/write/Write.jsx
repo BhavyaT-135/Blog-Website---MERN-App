@@ -1,8 +1,14 @@
 import './write.css'
+import postImg from '../../assets/post.jpg'
 
 export default function Write() {
   return (
       <div className='write'>
+          <img 
+              className='writeImg'
+              src={postImg}
+              alt=''
+          />
           <form className='writeForm'>
               <div className='writeFormGroup'>
                   <label htmlFor='fileInput'>
