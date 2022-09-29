@@ -1,24 +1,27 @@
 import './post.css'
 import postImg from '../../assets/post.jpg'
 
-export default function Post() {
+export default function Post({post}) {
   return (
     <div className='post'>
-      <img 
-        className='postImg'
-        src={postImg}
-        alt=''
-      />
+      {post.photo && (
+        <img
+          className='postImg'
+          src={post.photo}
+          alt=''
+        />
+      )}
       <div className='postInfo'>
         <div className='postCats'>
-          <span className='postCat'>Music</span>
-          <span className='postCat'>Life</span>
+          {post.categories.map(c => (
+            <span className='postCat'>{c.name}</span>
+          ))}
         </div>
-        <span className='postTitle'>Lorem ipsum dolor sit amet</span>
+        <span className='postTitle'>{post.title}</span>
         <hr />
-        <span className='postDate'> 1 hour ago</span>
+        <span className='postDate'>{new Date(post.createdAt).toDateString}</span>
       </div>
-      <p className='postDesc'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nisi consectetur purus, eget egestas nisi nisi eget nisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nisi consectetur purus, eget egestas nisi nisi eget nisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nisi consectetur purus, eget egestas nisi nisi eget nisi.</p>
+      <p className='postDesc'>{post.desc}</p>
     </div>
   )
 }
