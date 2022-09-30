@@ -1,8 +1,11 @@
 import React from './singlePost.css'
 import postImg from '../../assets/post.jpg'
+import {useLocation} from 'react-router'
 
 export default function SinglePost() {
-  return (
+    const location = useLocation();
+    const path = location.pathname.split("/")[2];
+    return (
       <div className='singlePost'>
           <div className='singlePostWrapper'>
               <img

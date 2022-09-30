@@ -1,5 +1,6 @@
 import './post.css'
-import postImg from '../../assets/post.jpg'
+// import postImg from '../../assets/post.jpg'
+import {Link} from 'react-router-dom'
 
 export default function Post({post}) {
   return (
@@ -17,9 +18,11 @@ export default function Post({post}) {
             <span className='postCat'>{c.name}</span>
           ))}
         </div>
-        <span className='postTitle'>{post.title}</span>
+        <Link to={`/post/${post._id}`} className="link">
+            <span className='postTitle'>{post.title}</span>
+        </Link>
         <hr />
-        <span className='postDate'>{new Date(post.createdAt).toDateString}</span>
+        <span className='postDate'>{new Date(post.createdAt).toDateString()}</span>
       </div>
       <p className='postDesc'>{post.desc}</p>
     </div>
