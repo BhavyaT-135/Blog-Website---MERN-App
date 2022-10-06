@@ -1,46 +1,43 @@
+import axios from "axios";
 import React from './singlePost.css'
-import postImg from '../../assets/post.jpg'
-import {useLocation} from 'react-router'
+import { useLocation } from 'react-router'
+import { useEffect, useState } from 'react';
 
 export default function SinglePost() {
     const location = useLocation();
     const path = location.pathname.split("/")[2];
+    const [post, setPost] = useState({});
+
+    useEffect(() => {
+        const getPost = async () => {
+            const res = await axios.get("/posts/" + path);
+            setPost(res.data);
+        };
+        getPost();
+    }, [path])
     return (
       <div className='singlePost'>
           <div className='singlePostWrapper'>
-              <img
-                  src={postImg}
+            {post.photo && (
+                <img
+                  src={post.photo}
                   alt=''
                   className='singlePostImg'
-              />
+                />
+            )}
               <h1 className='singlePostTitle'>
-                  Lorem ipsum dolor sit amet. 
+                  {post.title} 
                   <div className='singlePostEdit'>
                         <i className='singlePostIcon far fa-edit'></i>
                         <i className='singlePostIcon far fa-trash-alt'></i>
                   </div>
               </h1>
               <div className='singlePostInfo'>
-                  <span className='singlePostAuthor'>Author: <b>Bhavya</b></span>
-                  <span className='singlePostDate'>1 hour ago</span>
+                  <span className='singlePostAuthor'>Author: <b>{post.username}</b></span>
+                  <span className='singlePostDate'>{new Date(post.createdAt).toDateString()}</span>
               </div>
               <p className='singlePostDesc'>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam,
-                  officia quidem. Quisquam, quae. Quisquam, quae. Quisquam, quae.
-                  Quisquam, quae. Quisquam, quae. Quisquam, quae. Quisquam, quae.
-                  Quisquam, quae. Quisquam, quae. Quisquam, quae. Quisquam, quae.
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam,
-                  officia quidem. Quisquam, quae. Quisquam, quae. Quisquam, quae.
-                  Quisquam, quae. Quisquam, quae. Quisquam, quae. Quisquam, quae.
-                  Quisquam, quae. Quisquam, quae. Quisquam, quae. Quisquam, quae.
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam,
-                  officia quidem. Quisquam, quae. Quisquam, quae. Quisquam, quae.
-                  Quisquam, quae. Quisquam, quae. Quisquam, quae. Quisquam, quae.
-                  Quisquam, quae. Quisquam, quae. Quisquam, quae. Quisquam, quae.
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam,
-                  officia quidem. Quisquam, quae. Quisquam, quae. Quisquam, quae.
-                  Quisquam, quae. Quisquam, quae. Quisquam, quae. Quisquam, quae.
-                  Quisquam, quae. Quisquam, quae. Quisquam, quae. Quisquam, quae.
+                  {post.desc}
               </p>
           </div>
       </div>
