@@ -1,1 +1,1 @@
-# Blog-It - A MERN Application 
+# Blog-It :pencil:
