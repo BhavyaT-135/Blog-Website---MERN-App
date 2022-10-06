@@ -1,3 +1,5 @@
 # Blog-It :pencil:
 
-Blog-It is a MERN Application.
+This is a web application created using the MERN Stack.
+
+## Tech Stack Used :technologist:
