@@ -6,3 +6,4 @@ This is a web application created using the MERN Stack.
 - MongoDB - Database
 - ExpressJS - Backend
 - ReactJS - Frontend
+- NodeJS - JS Framework
