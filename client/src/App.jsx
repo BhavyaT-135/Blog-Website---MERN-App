@@ -10,7 +10,7 @@ import { useContext} from "react";
 import { Context } from "./context/Context";
 
 function App() {
-  const {user} = useContext(Context);
+  const {currentUser} = useContext(Context);
   return (
     <Router>
     <TopBar />
