@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
+const errorHandler = require("./middleware/error");
+
 const authRoute = require('./routes/auth');
 const userRoute = require('./routes/users');
 const postRoute = require('./routes/posts');
@@ -38,6 +40,9 @@ app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/categories", categoryRoute);
 
+
+// error Handler Middleware
+app.use(errorHandler);
 
 app.listen(5000, () => {
     console.log('Server started on port 5000');
