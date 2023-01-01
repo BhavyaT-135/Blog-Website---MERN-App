@@ -1,5 +1,5 @@
 import "./topbar.css";
-// import profilePic from "../../assets/profile.jpeg";
+import profilePic from "../../assets/profile.jpeg";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../../context/Context";
@@ -32,7 +32,7 @@ export default function TopBar() {
         {user ? (
           <img
               className="topImage"
-              src={user.profilePic}
+            src={user.profilePic ? user.profilePic : profilePic}
               alt="" />
         ) : (
             <ul className="topList">
